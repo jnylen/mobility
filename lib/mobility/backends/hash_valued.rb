@@ -16,11 +16,13 @@ Defines read and write methods that access the value at a key with value
       #
       # @!macro backend_reader
       def read(locale, _options = nil)
+        return unless translations
         translations[locale]
       end
 
       # @!macro backend_writer
       def write(locale, value, _options = nil)
+        translations ||= {}
         translations[locale] = value
       end
       # @!endgroup
